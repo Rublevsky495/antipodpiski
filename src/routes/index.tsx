@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Антиподписки" },
       {
         property: "og:description",
-        content: "AI-помощник, который находит подписки и регулярные списания в банковской выписке.",
+        content: "Сервис, который находит подписки и регулярные списания в банковской выписке.",
       },
     ],
   }),
@@ -129,7 +129,7 @@ function Hero() {
         <div>
           <span className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs text-muted-foreground">
             <Sparkles className="h-3 w-3 text-mint" />
-            AI-разбор банковской выписки
+            Разбор банковской выписки
           </span>
 
           <h1 className="mt-6 text-[42px] md:text-6xl lg:text-[64px] font-semibold leading-[1.02] tracking-[-0.02em]">

@@ -107,6 +107,7 @@ function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="ru" className="dark">
       <head>
+        <script src="https://telegram.org/js/telegram-web-app.js" />
         <HeadContent />
       </head>
       <body>
@@ -119,6 +120,16 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    const tg = (window as unknown as {
+      Telegram?: { WebApp?: { ready: () => void; expand: () => void } };
+    }).Telegram?.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+    }
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
