@@ -42,8 +42,10 @@ function Page() {
       <Nav />
       <Hero />
       <Flow />
+      <HowItWorks />
       <Banks />
       <Security />
+      <DataSecurity />
       <Price />
       <FAQ />
       <Footer />
@@ -394,6 +396,35 @@ function Flow() {
   );
 }
 
+/* ============ HowItWorks ============ */
+function HowItWorks() {
+  const steps = [
+    { n: "01", title: "Загружаете PDF-выписку", desc: "Из любого российского банка: Т-Банк, Сбер, ВТБ, Альфа-Банк, Озон Банк, Яндекс Банк." },
+    { n: "02", title: "Бот анализирует выписку", desc: "Находит регулярные и платные списания: подписки, страховки, комиссии, платные услуги банка." },
+    { n: "03", title: "Видите детали по каждому сервису", desc: "Сколько списал за выбранный период и когда спишет в следующий раз." },
+    { n: "04", title: "Получаете прямые ссылки", desc: "Переходите и спокойно отключаете лишние подписки и услуги." },
+  ];
+  return (
+    <section id="how-it-works" className="mx-auto max-w-6xl px-5 py-20">
+      <div className="mx-auto max-w-xl text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Как это работает</p>
+        <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
+          От выписки до <span className="text-gradient">отключения</span>
+        </h2>
+      </div>
+      <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map((s) => (
+          <div key={s.n} className="glass rounded-3xl p-6">
+            <span className="text-xs font-semibold text-mint">{s.n}</span>
+            <h3 className="mt-3 text-lg font-semibold leading-snug">{s.title}</h3>
+            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /* ============ Banks ============ */
 function Banks() {
   const banks = ["Т-Банк", "Сбер", "ВТБ", "Альфа-Банк", "Озон Банк", "Яндекс Банк"];
@@ -455,6 +486,39 @@ function Security() {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+/* ============ DataSecurity ============ */
+function DataSecurity() {
+  const items = [
+    { icon: <FileText className="h-4 w-4" />, t: "Выписки используются только для анализа." },
+    { icon: <Trash2 className="h-4 w-4" />, t: "После обработки выписки автоматически удаляются." },
+    { icon: <Lock className="h-4 w-4" />, t: "Мы не продаём и не передаём данные третьим лицам." },
+    { icon: <ShieldCheck className="h-4 w-4" />, t: "Пользователь может в любой момент запросить удаление своих данных." },
+  ];
+  return (
+    <section id="data-security" className="mx-auto max-w-6xl px-5 py-20">
+      <div className="mx-auto max-w-xl text-center">
+        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Безопасность</p>
+        <h2 className="mt-3 text-3xl md:text-4xl font-semibold tracking-tight">
+          <span className="text-gradient">🔒 Безопасность данных</span>
+        </h2>
+      </div>
+      <div className="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2">
+        {items.map((it, i) => (
+          <div key={i} className="glass flex items-start gap-3 rounded-2xl px-5 py-4">
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/5 text-mint">
+              {it.icon}
+            </span>
+            <span className="text-sm leading-relaxed">{it.t}</span>
+          </div>
+        ))}
+      </div>
+      <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted-foreground leading-relaxed">
+        Бот работает только с PDF-выпиской, которую вы загружаете. У него нет доступа к вашему банку — он не видит логины и пароли и не может списать деньги.
+      </p>
     </section>
   );
 }
@@ -599,14 +663,76 @@ function FAQ() {
 function Footer() {
   return (
     <footer className="border-t border-white/5">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-10 text-xs text-muted-foreground md:flex-row">
-        <p className="flex items-center gap-2">
-          <Logo /> © {new Date().getFullYear()} Антиподписки
-        </p>
-        <p className="max-w-md text-center md:text-right">
-          Сервис не возвращает деньги — показывает, что можно отключить или проверить на возврат.
-          Решение принимает банк.
-        </p>
+      <div className="mx-auto max-w-6xl px-5 py-12">
+        <div className="grid gap-10 md:grid-cols-3">
+          <div>
+            <p className="flex items-center gap-2 text-sm font-semibold">
+              <Logo /> Антиподписки
+            </p>
+            <p className="mt-4 text-xs text-muted-foreground">
+              Сервис не возвращает деньги — показывает, что можно отключить или проверить на возврат.
+              Решение принимает банк.
+            </p>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">Документы</p>
+            <ul className="mt-4 space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://telegra.ph/Polzovatelskoe-soglashenie-i-oferta--Antipodpiski-05-31"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition"
+                >
+                  Пользовательское соглашение и оферта
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://telegra.ph/Politika-obrabotki-personalnyh-dannyh--Antipodpiski-05-31"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition"
+                >
+                  Политика обработки персональных данных
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://telegra.ph/Soglasie-na-obrabotku-personalnyh-dannyh--Antipodpiski-05-31"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition"
+                >
+                  Согласие на обработку персональных данных
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">Оператор</p>
+            <div className="mt-4 space-y-1 text-xs text-muted-foreground">
+              <p>Сервис «Антиподписки»</p>
+              <p>Оператор: Рублёвская Алина Алексеевна</p>
+              <p>ИНН 366411105656 (самозанятая, плательщик НПД), г. Воронеж</p>
+              <p>E-mail: 1618doc@gmail.com</p>
+              <p>
+                Поддержка:{" "}
+                <a
+                  href="https://t.me/antipodpiski"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-foreground transition"
+                >
+                  @antipodpiski
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="mt-10 border-t border-white/5 pt-6 text-center text-xs text-muted-foreground">
+          <p>© {new Date().getFullYear()} Антиподписки</p>
+        </div>
       </div>
     </footer>
   );
