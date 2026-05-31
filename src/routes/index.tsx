@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Plus,
   Check,
+  Trash2,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
