@@ -499,8 +499,8 @@ function Price() {
           <div className="relative">
             <p className="text-xs uppercase tracking-wider opacity-80">Полный отчёт</p>
             <p className="mt-3 text-4xl font-semibold">
-              175 <span className="align-middle text-2xl">⭐</span>
-              <span className="ml-2 text-base font-medium opacity-80">≈ 299 ₽</span>
+              290 <span className="align-middle text-2xl">⭐</span>
+              <span className="ml-2 text-base font-medium opacity-80">≈ 499 ₽</span>
             </p>
             <p className="mt-3 text-sm opacity-85">Все подписки, комиссии и платные услуги с подсказками что делать дальше.</p>
             <ul className="mt-6 space-y-2.5 text-sm">
